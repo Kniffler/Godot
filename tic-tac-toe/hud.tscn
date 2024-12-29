@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3qtxirpe4w3b"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_lhicp"]
+[ext_resource type="FontFile" uid="uid://bbutntgycma8q" path="res://assets/Pixeboy-z8XGD.ttf" id="2_vt5j7"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_jujdb"]
+action = &"new_game"
+
+[sub_resource type="Shortcut" id="Shortcut_whalq"]
+events = [SubResource("InputEventAction_jujdb")]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_lhicp")
+
+[node name="GameNameAndMsg" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 50.0
+offset_right = 240.0
+offset_bottom = 438.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_vt5j7")
+theme_override_font_sizes/font_size = 64
+text = "Welcome to Lume's Tic-Tac-Toe"
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="StartButton" type="Button" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(100, 0)
+action_mode = 0
+shortcut = SubResource("Shortcut_whalq")
+metadata/_edit_group_ = true
+
+[node name="Text" type="Label" parent="StartButton"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 95.0
+theme_override_fonts/font = ExtResource("2_vt5j7")
+theme_override_font_sizes/font_size = 80
+text = "Play!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="ClickMeButton" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 184.0
+offset_top = 470.0
+offset_right = 240.0
+offset_bottom = 480.0
+grow_horizontal = 2
+metadata/_edit_group_ = true
+
+[node name="Text" type="Label" parent="ClickMeButton"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 56.0
+offset_bottom = 10.0
+theme_override_fonts/font = ExtResource("2_vt5j7")
+text = "Click me"
+
+[node name="FavourTimer" type="Timer" parent="."]
+wait_time = 0.12
+one_shot = true
+
+[node name="Hint" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.5
+offset_top = -110.0
+offset_right = 51.5
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_vt5j7")
+theme_override_font_sizes/font_size = 25
+text = "O starts*"
+
+[connection signal="pressed" from="StartButton" to="." method="signal_game_start"]
+[connection signal="pressed" from="ClickMeButton" to="." method="show_favour"]

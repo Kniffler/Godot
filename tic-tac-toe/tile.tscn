@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwcv4f0jrkbwj"]
+
+[ext_resource type="Script" path="res://tile.gd" id="1_ef38r"]
+[ext_resource type="Texture2D" uid="uid://3ovmopldsd8w" path="res://assets/idle.png" id="1_wywr7"]
+[ext_resource type="Texture2D" uid="uid://ddm6fnc4s2tob" path="res://assets/o.png" id="2_hepac"]
+[ext_resource type="FontFile" uid="uid://bbutntgycma8q" path="res://assets/Pixeboy-z8XGD.ttf" id="2_y1lhi"]
+[ext_resource type="Texture2D" uid="uid://x3y5478xovyp" path="res://assets/x.png" id="3_vg753"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rnktx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wywr7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hepac")
+}],
+"loop": true,
+"name": &"o",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vg753")
+}],
+"loop": true,
+"name": &"x",
+"speed": 0.0
+}]
+
+[node name="Tile" type="AnimatedSprite2D"]
+visible = false
+texture_filter = 1
+position = Vector2(75, 75)
+scale = Vector2(4.688, 4.688)
+sprite_frames = SubResource("SpriteFrames_rnktx")
+animation = &"o"
+script = ExtResource("1_ef38r")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -15.9983
+offset_top = -15.9983
+offset_right = 16.0017
+offset_bottom = 16.0017
+theme_override_fonts/font = ExtResource("2_y1lhi")
+theme_override_font_sizes/font_size = 80
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
